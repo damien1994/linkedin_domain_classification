@@ -2,11 +2,12 @@
 Main file
 """
 
+import os
 import sys
 import pandas as pd
 import numpy as np
 
-from domain_classification.config import BASIC_TECH_VOCABULARY
+from domain_classification.config import BASIC_TECH_VOCABULARY, CURRENT_DIR
 from domain_classification.utils import parse_args, remove_accents, remove_company_name
 
 
@@ -16,7 +17,9 @@ def main(input_file):
 
     # load complementary tech vocabulary to improve our dictionary maturity
     # this file has been created by scrapping bluecoders website
-    df_voc_tech = pd.read_csv('data/scrap_tech_voc.csv', delimiter=';')
+
+    df_voc_tech = pd.read_csv(os.path.join(CURRENT_DIR, 'data/scrap_tech_voc.csv'),
+                              delimiter=';')
 
     # construct our full tech glossary
     tech_vocabulary_completed = BASIC_TECH_VOCABULARY.union(set(df_voc_tech.technos_name))
@@ -38,7 +41,9 @@ def main(input_file):
     df_job_title['label'] = np.where(df_job_title['Titre'].str.findall(r"|".join(glossary_tech)),
                                      True,
                                      False)
-    return df_job_title
+
+    return df_job_title.to_csv(os.path.join(CURRENT_DIR,
+                                            'results/job_title_classification.csv'))
 
 
 if __name__ == '__main__':
