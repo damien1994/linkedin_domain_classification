@@ -34,5 +34,22 @@ BASIC_TECH_VOCABULARY = {
     'aws',
     'linux',
     'cybersecurite',
-    'administrateur systeme'
+    'systeme',
+    'systemes',
+    'donnees',
+    'system',
+    'informatique',
+    'frontend',
+    'backend',
+    'ruby'
+}
+
+STUDENTS_VOC = {
+    'alternance',
+    'etudiant',
+    'stagiaire',
+    'alternant',
+    'master',
+    'school',
+    'student'
 }

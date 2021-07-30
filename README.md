@@ -3,7 +3,7 @@ L'objectif est de construire un système prenant en entrée une série d'intitul
 
 # TO DO
 - Improve quality code : implement unit test, function refactoring, deal with data paths, ...
-- Docker + github actions (personal)
+- Docker + github actions (personal) 
 - create a sample of data labeleb by the logic rule defines in V1 + human check 
 - construct a ML model on these labeled data to see performance
 - Improve readme

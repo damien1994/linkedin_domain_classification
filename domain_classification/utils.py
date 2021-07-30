@@ -20,6 +20,16 @@ def create_parser():
         help='csv file to process',
         required=True
     )
+    parser.add_argument(
+        '--output_filename',
+        help='output filename',
+        required=True
+    )
+    parser.add_argument(
+        '--evaluate',
+        help='if you want an overview of logic rule performance',
+        required=False
+    )
     return parser
 
 
@@ -51,3 +61,13 @@ def remove_company_name(dataframe: pd.DataFrame, col: str, pattern: str) -> pd.S
     :return a pandas series with company name removed
     """
     return dataframe[col].apply(lambda x: re.split(pattern, x)[0])
+
+
+def define_job_title_category(condition1, condition2):
+    if condition1:
+        return True
+    elif condition2:
+        return 'not defined'
+    else:
+        return False
+
